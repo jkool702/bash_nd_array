@@ -2,6 +2,9 @@
 
 # nd_array - n-dimensional nested array managemnt for bash
 
+# source nd_array.bash
+# source <(curl https://raw.githubusercontent.com/jkool702/bash_nd_array/main/nd_array.bash)
+
 nd_usage() {
     ## displays a quick usage example for how to use the nd_array functions
     
