@@ -153,14 +153,14 @@ nd_set() {
     echoStr_A="$1"
     kk=2
     while (( ${kk} < ${#} )); do
-        if [[ "${!kk}" =~ ^[0-9]*[1-9]+[0-9]*$ ]]; then 
+        if [[ "${!kk}" =~ ^[0-9]+$ ]]; then 
             echoStr_A+="_${!kk^^}"
         else
             echoStr_A+="$({ source /proc/self/fd/0; }<<<"printf '%s ' $(echo "${!kk^^}" | sed -E s/'^\[?([0-9]+)\:([0-9])+\]?$'/'{\1..\2}'/)" | sed -E 's/[[:space:]]*$//;s/ /,/g;s/^(.+)$/_{\1}/')"
         fi
         ((kk++))
     done
-    if [[ "${!kk}" =~ ^[0-9]*[1-9]+[0-9]*$ ]]; then 
+    if [[ "${!kk}" =~ ^[0-9]+$ ]]; then 
         echoStr_A+="[${!kk}"]
     else
         echoStr_A+="$({ source /proc/self/fd/0; }<<<"printf '%s ' $(echo "${!kk^^}" | sed -E s/'^\[?([0-9]+)\:([0-9])+\]?$'/'{\1..\2}'/)" | sed -E 's/[[:space:]]*$//;s/ /,/g;s/^(.+)$/\[{\1}\]/')"
